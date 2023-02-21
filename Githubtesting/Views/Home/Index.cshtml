@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Chapter
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<textarea id="editor" class="form-control mb-2" rows="10" name="@Html.NameFor(m => m.Text)"> @Model.Text</textarea>
+
+@section Scripts {
+    @{
+
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        //<script src="~/js/Book/ChapterEdit.js" asp-append-version="true"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .then(editor => {
+                    console.log('Editor initialized', editor);
+                })
+                .catch(error => {
+                    console.error('Editor initialization failed', error);
+                });
+        </script>
+
+    }
+    }
